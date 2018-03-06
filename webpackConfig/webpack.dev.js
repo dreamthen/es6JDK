@@ -11,7 +11,7 @@ const webpack = require("webpack"),
     STYLESHEET_DIR = path.resolve(__dirname, "../stylesheets"),
     MANIFEST_DIR = require(path.resolve(__dirname, `${DLL_DIR}/vendor_manifest.dll.json`));
 
-const PORT = 9088;
+const PORT = 9098;
 
 const edition = "dev";
 
@@ -102,8 +102,9 @@ const webpackDevPlugin = {
             NODE_ENV: edition
         }),
         new webpack.DefinePlugin({
-            "process.env.NODE_ENV": process.env.NODE_ENV
+            "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
         }),
+        new extractTextPlugin("[name].bundle.css"),
         new htmlWebpackPlugin({
             publicPath: ROOT_DIR,
             filename: "index.html",
@@ -117,6 +118,6 @@ const webpackDevPlugin = {
         port: PORT,
         proxy: {}
     }
-}
+};
 
 module.exports = webpackDevPlugin;
