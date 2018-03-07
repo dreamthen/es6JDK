@@ -1,6 +1,3 @@
-import "babel-polyfill";
-const fs  = require("fs-extra");
-
 {
     // const object = {
     //         name: "Gary",
@@ -24,35 +21,35 @@ const fs  = require("fs-extra");
     // let queryMap = splitUrlFunc("/#/app/shop/vas/bid/index?showContract=1&reload=1520320829863&shopId=324965008");
     // console.log(queryMap.get("showContract"));
     //迭代器
-    // let obj = {
-    //     name: "Gary",
-    //     age: 24,
-    //     hobby: ["basketball", "tennis"],
-    //     [Symbol.iterator]() {
-    //         let self = this,
-    //             arr_this = Object.keys(self),
-    //             leg = arr_this.length,
-    //             index = 0;
-    //         return {
-    //             next() {
-    //                 if (index < leg) {
-    //                     return {
-    //                         value: self[arr_this[index++]],
-    //                         done: false
-    //                     }
-    //                 } else {
-    //                     return {
-    //                         value: self[arr_this[index++]],
-    //                         done: true
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
-    // for (let item of obj) {
-    //     console.log(item);
-    // }
+    let obj = {
+        name: "Gary",
+        age: 24,
+        hobby: ["basketball", "tennis"],
+        [Symbol.iterator]() {
+            let self = this,
+                arr_this = Object.keys(self),
+                leg = arr_this.length,
+                index = 0;
+            return {
+                next() {
+                    if (index < leg) {
+                        return {
+                            value: self[arr_this[index++]],
+                            done: false
+                        }
+                    } else {
+                        return {
+                            value: self[arr_this[index++]],
+                            done: true
+                        }
+                    }
+                }
+            }
+        }
+    };
+    for (let item of obj) {
+        console.log(item);
+    }
     // function* ajax() {
     //     yield new Promise((resolve, reject) => {
     //         resolve({})
