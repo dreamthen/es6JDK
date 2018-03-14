@@ -2,8 +2,8 @@ const fs = require("fs");
 
 function readFile(file) {
     return new Promise((resolve, reject) => {
-        fs.readFile(file, "utf-8", (err, data) => {
-            if (err) return reject(err);
+        fs.readFile(file, "utf-8", (error, data) => {
+            if (error) return reject(error);
             resolve(data);
         });
     });
@@ -18,20 +18,22 @@ function* read() {
 }
 
 co(read).then((data) => {
-    console.log(`end: ${data}`);
+    console.log(data);
 }, () => {
 
 });
 
 function co(gen) {
-    let it = gen();
+    let lg = gen();
     return new Promise((resolve, reject) => {
-        (function nexter(lastVal) {
-            let {value, done} = it.next(lastVal);
+        (function next(lastValue) {
+            let lgObject = lg.next(lastValue),
+                value = lgObject.value,
+                done = lgObject.done;
             if (done) {
                 resolve(value);
             } else {
-                value.then(nexter, reject);
+                value.then(next, reject);
             }
         })();
     });
