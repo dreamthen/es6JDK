@@ -520,6 +520,149 @@
 // }
 // let result = destructuringArray([1, [2, 7, [5, 6]], 3], "[a,[b,,d],c]");
 // console.log(result);
-
-
-
+// 树
+// property prototype
+// attribute
+// var clearlove = document.getElementById("clearlove"),
+//     li = document.getElementsByTagName("li"),
+//     liByClass = document.getElementsByClassName("ulLi"),
+//     liUlByName = document.getElementsByName("liUl"),
+//     liSelector = document.querySelectorAll("li");
+// var ul = liByClass[0].parentNode,
+//     ul_end = liByClass[1].parentNode;
+// ul_end.removeChild(liByClass[1]);
+// ul_end.appendChild(liByClass[2]);
+// var ul = liByClass[0].parentNode;
+// var ul = liByClass[0].parentElement;
+// console.log(ul, ul.childNodes, ul.childNodes[0].nodeName, ul.childNodes[1].nodeName, ul.childNodes[0].nodeType, ul.childNodes[1].nodeType);
+// var li_new = document.createElement("li");
+// li_new.innerHTML = "clearlove100";
+// document.body.appendChild(li_new);
+// console.log(clearlove, li[0], liByClass[1], liUlByName[2], liSelector[1]);
+// console.log(clearlove.id, li[0].className);
+// li[0].className = "liUlReverse";
+// console.log(li[0].style.display);
+// li[0].style.display = "none";
+// console.log(li[0].nodeName, li[0].nodeType); //LI 1
+// console.log(li[1].getAttribute("data-code"));
+// li[0].setAttribute("data-code", "0004");
+// property只是对一个JS对象属性的修改
+// attribute则是对html标签属性的修改
+// console.log(navigator.userAgent);
+// function isChrome(userAgent) {
+//     return navigator.userAgent.indexOf(userAgent) !== -1;
+// }
+// console.log(isChrome("Chrome"));
+// console.log(screen.width, screen.height);
+// console.log(location, location.href, location.host, location.hostname, location.port, location.pathname, location.search, location.hash);
+// history.back();
+// history.forward();
+// history.go(1);
+// history.go(-1);
+// function urlSearchSplit(url) {
+//     let param = url.slice(url.indexOf("?") + 1),
+//         paramArray = param.split("&"),
+//         paramObj = {};
+//     for (let paramItem of paramArray) {
+//         let paramInnerArray = paramItem.split("=");
+//         paramObj[paramInnerArray[0]] = paramInnerArray[1];
+//     }
+//     return paramObj;
+// }
+// console.log(urlSearchSplit(window.location.search));
+// function DurationDateArray(beginDate, endDate) {
+//     var beginTime = new Date(beginDate).getTime(),
+//         endTime = new Date(endDate).getTime(),
+//         dayTime = 1000 * 60 * 60 * 24,
+//         result = [];
+//
+//     function getDayTime(date) {
+//         let date_new = new Date(date);
+//         return `${date_new.getFullYear()}-${`0${date_new.getMonth() + 1}`.slice(-2)}-${`0${date_new.getDate()}`.slice(-2)}`;
+//     }
+//
+//     for (let i = beginTime; i <= endTime; i += dayTime) {
+//         let day = getDayTime(i);
+//         result = [...result, day];
+//     }
+//     return result;
+// }
+// let DurationArr = DurationDateArray('2018-9-10', '2018-11-13');
+// console.log(DurationArr);
+// let appEvent = {
+//     getEvent(event) {
+//         return event ? event : window.event;
+//     },
+//     getTarget(event) {
+//         return event.target ? event.target : event.srcElement;
+//     },
+//     stopPropagation(event) {
+//         if (event.stopPropagation) {
+//             event.stopPropagation();
+//         } else {
+//             event.cancelBubble = true;
+//         }
+//     },
+//     preventDefault(event) {
+//         if (event.preventDefault) {
+//             event.preventDefault();
+//         } else {
+//             event.returnValue = false;
+//         }
+//     },
+//     addEventListenerHandler(ele, type, fn) {
+//         if (ele.addEventListener) {
+//             ele.addEventListener(type, fn);
+//         } else {
+//             ele.attachEvent(`on${type}`, fn);
+//         }
+//     },
+//     removeEventListenerHandler(ele, type, fn) {
+//         if (ele.removeEventListener) {
+//             ele.removeEventListener(type, fn);
+//         } else {
+//             ele.detachEvent(`on${type}`, fn);
+//         }
+//     }
+// };
+// function bindEvent(ele, type, selector, fn) {
+//     // appEvent.addEventListenerHandler(ele, type, fn);
+//     // appEvent.addEventListenerHandler(ele, type, fn);
+//     if (!fn) {
+//         fn = selector;
+//         selector = null;
+//     }
+//     ele.addEventListener(type, function addEvent(e) {
+//         var target;
+//         if (selector) {
+//             target = e.target;
+//             if (target.matches(selector)) {
+//                 fn.call(target, e);
+//             }
+//         } else {
+//             fn(e);
+//         }
+//     });
+// }
+// let clearlove = document.getElementById("clearlove67");
+// bindEvent(clearlove, "click", "li", function (e) {
+//     console.log(this.innerHTML);
+// });
+// bindEvent(clearlove, "click", function (e) {
+//     console.log(clearlove.innerHTML);
+// });
+// let clearlove = document.getElementById("clearlove67"),
+//     clearloveInner = document.getElementById("clearlove");
+// bindEvent(clearlove, "click", function (e) {
+//     let event = appEvent.getEvent(e),
+//         target = appEvent.getTarget(event);
+//     console.log(target);
+//     console.log(target.childNodes);
+// });
+// bindEvent(clearloveInner, "click", function (e) {
+//     let event = appEvent.getEvent(e),
+//         target = appEvent.getTarget(event);
+//     console.log(target);
+//     appEvent.stopPropagation(event);
+//     appEvent.preventDefault(event);
+// });
