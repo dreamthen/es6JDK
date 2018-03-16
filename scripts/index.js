@@ -666,3 +666,92 @@
 //     appEvent.stopPropagation(event);
 //     appEvent.preventDefault(event);
 // });
+// ajax
+//跨域:协议、域名和端口有一个不相同，就是跨域
+//跨域:协议(http或者https等)、域名和端口，有一个不相同就是跨域
+// var xhr = new XMLHttpRequest();
+// xhr.open("get", "../data/data.json", true);
+// xhr.onreadystatechange = function () {
+//     if (xhr.readyState === 4) {
+//         if (xhr.status === 200) {
+//             var data = JSON.parse(xhr.responseText);
+//             console.log(data.header);
+//         }
+//     }
+// };
+// xhr.send(null);
+// var xhr = new XMLHttpRequest();
+// xhr.open("get", "../data/data.json", true);
+// xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4) {
+//         if (xhr.status === 200) {
+//             console.log(JSON.parse(xhr.responseText));
+//         }
+//     }
+// };
+// xhr.send(null);
+// 三种标签可以进行跨域
+// img src
+// link href 可利用CDN,CDN跨域
+// script src 可利用CDN,CDN跨域 JSONP跨域
+// document.cookie = "name:Gary,age:24";
+// console.log(document.cookie);
+// cookie能存储的量:4kb
+// API太简易,使用难苛
+// var person = {
+//     name: "Gary",
+//     age: 24,
+//     hobby: ['basketball', 'tennis']
+// };
+// localStorage.setItem("person", JSON.stringify(person));
+// console.log(JSON.parse(localStorage.getItem("person")));
+// localStorage.removeItem("person");
+// console.log(JSON.parse(localStorage.getItem("person")));
+// sessionStorage.setItem("person", JSON.stringify(person));
+// console.log(JSON.parse(sessionStorage.getItem("person")));
+// localStorage和sessionStorage存储量大:5M
+// API易用且效率高
+// targetArray = ["2018-02-18", "2018-02-23", "2018-02-28", "2018-03-05", "2018-03-10", "2018-03-15"]
+// tempArray = [['2018-02-23','2018-02-28'], ['2018-03-10', '2018-03-15']]
+// [{form: 1, to: 2}, {from: 4, to: 5}]
+// function tempToTargetPostion(targetArray, tempArray) {
+//     var result = [];
+//     for (let [index, value] of tempArray.entries()) {
+//         let resultObj = {};
+//         for (let [targetIndex, targetValue] of targetArray.entries()) {
+//             switch (targetValue) {
+//                 case value[0]:
+//                     resultObj["from"] = targetIndex;
+//                     break;
+//                 case value[1]:
+//                     resultObj["to"] = targetIndex;
+//                     break;
+//                 default:
+//                     break;
+//             }
+//         }
+//         result = [...result, resultObj];
+//     }
+//     return result;
+// }
+// let targetArray = ["2018-02-18", "2018-02-23", "2018-02-28", "2018-03-05", "2018-03-10", "2018-03-15"],
+//     tempArray = [['2018-02-23', '2018-02-28'], ['2018-03-10', '2018-03-15'], ['2018-02-28', '2018-04-18']];
+// let resultObjArr = tempToTargetPostion(targetArray, tempArray);
+// console.log(resultObjArr);
+// function durationDateString(beginDate, endDate) {
+//     let beginTime = new Date(beginDate).getTime(),
+//         endTime = new Date(endDate).getTime(),
+//         dayTime = 1000 * 60 * 60 * 24,
+//         resultArr = [];
+//     function formatterDate(dateTime) {
+//         let date = new Date(dateTime);
+//         return `${date.getFullYear()}-${`0${date.getMonth() + 1}`.slice(-2)}-${`0${date.getDate()}`.slice(-2)}`;
+//     }
+//     for (let i = beginTime; i <= endTime; i += dayTime) {
+//         let dayFormatter = formatterDate(i);
+//         resultArr = [...resultArr, dayFormatter];
+//     }
+//     return resultArr;
+// }
+// let result = durationDateString('2018-09-10', '2018-11-08');
+// console.log(result);
