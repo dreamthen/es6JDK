@@ -755,3 +755,10 @@
 // }
 // let result = durationDateString('2018-09-10', '2018-11-08');
 // console.log(result);
+// require(['./a.js'], function (a) {
+//     let date = new Date();
+//     console.log(a.getA(date));
+// });
+let a = require("./a"),
+    date = new Date();
+a.getA(date);
